@@ -1,0 +1,36 @@
+<apex:component controller="CaseSysChangesController" access="global">
+  <!-- Attribute for the case Id -->
+  <apex:attribute
+    name="currentCaseId"
+    type="Id"
+    description="Id of the case"
+    assignTo="{!caseId}"
+  />
+
+  <!-- Table size specs and column header names -->
+  <table border="2" cellspacing="5">
+    <tr>
+      <td><b>Sys Change Number</b></td>
+      <td><b>Type</b></td>
+      <td><b>Due Date</b></td>
+      <td><b>Description</b></td>
+    </tr>
+
+    <!-- Object and its fields that constitute rows -->
+    <apex:repeat value="{!sysChanges}" var="sc">
+      <tr>
+        <td>{!sc.Name}</td>
+        <td>{!sc.Type_of_Change__c}</td>
+        <td>
+          <!-- Specifying desired formatting on the date field -->
+          <apex:outputText value="{0,date,dd MMM yyyy}">
+            <apex:param
+              value="{!DATETIMEVALUE(sc.Target_Completion_Date__c)}"
+            />
+          </apex:outputText>
+        </td>
+        <td>{!sc.Description_of_Change__c}</td>
+      </tr>
+    </apex:repeat>
+  </table>
+</apex:component>
