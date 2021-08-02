@@ -1,0 +1,24 @@
+<messaging:emailTemplate recipientType="User"
+    
+    relatedToType="Case"
+    subject=" A New Case for the Communications Team Has Been Created: {!relatedTo.CaseNumber}"
+    replyTo="email@email.com">
+    
+<messaging:htmlEmailBody >        
+    
+        <!-- Email body. Case number (!relatedTo.CaseNumber) is hyperlinked to the case record. --> 
+        <p>A new case for the Communications team has been created via the self-service web form. Click here to see the case: &nbsp; <apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">{!relatedTo.CaseNumber}</apex:outputlink></p>
+        <br/>Contact Name: {!relatedTo.Contact.Full_Name__c}   
+        <br/>Subject: {!relatedTo.Subject}
+        <br/>Description: {!relatedTo.Description}
+        <br/><br/> 
+        <br/>Below are the system changes related to the case.
+        <br/><br/>
+ 
+<!-- Since the controller creates a table of system changes, referencing it here inserts a table into the email template -->
+<!-- "CaseSysChanges" is the name of the custom component. "currentCaseId" is a variable declared in the component to hold the case Id. -->
+<!-- "relatedTo.Id" is the Id of relatedToType (case) declared at the top of the email template. -->      
+<c:CaseSysChanges currentCaseId="{!relatedTo.Id}"/><br/><br/>
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>
