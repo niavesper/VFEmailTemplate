@@ -1,12 +1,3 @@
-/*
-* Date:			4/1/21
-* Author:		Ksenia Choate
-* Description:	Controller for the CaseSysChanges custom component for the VF email template 
-				"(DHA) Notification to the Comm.Team Queue: Case Created via Hazel (Visualforce)"
-				Email template API name: DHA_Notif_to_CommTeam_Hazel_Case_VF
-* History:		V.1
-*/
-
 public class CaseSysChangesController {
   // Make caseId readable and editable by other code
   // WHY: to be used with the "assignTo" attribute in CaseSysChanges.component (a VF component)
