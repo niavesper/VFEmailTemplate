@@ -3,11 +3,8 @@ public with sharing class CaseSysChangesControllerTest {
   /***** Test data setup *****/
   @TestSetup
   static void createCase() {
-    // Contact con = new Contact();
-    //  con
     // generate and insert a test case
     Case c = new Case();
-    // c.ContactId = '0034C00000OT8ApQAL'; /***** USE THE ID OF THE CREATED CONTACT */
     c.Affected_System_Global__c = 'Marketing/Communications Team';
     c.Affected_system__c = 'Campaign/Graphic Design Suite';
     c.Subject = 'Test Case';
